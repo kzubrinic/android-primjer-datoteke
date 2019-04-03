@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PrimjerDatoteke</string>
+    <string name="spremi_lok">Spremi (lok)</string>
+    <string name="citaj_lok">Čitaj (lok)</string>
+    <string name="spremi_van">Spremi (van)</string>
+    <string name="citaj_van">Čitaj (van)</string>
+</resources>
