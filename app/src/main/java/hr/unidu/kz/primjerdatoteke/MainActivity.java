@@ -5,7 +5,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -99,7 +99,6 @@ public class MainActivity extends Activity {
 
         File extStore = Environment.getExternalStorageDirectory();
         String path = extStore.getAbsolutePath() + "/" + nazivDatoteke;
-        Log.i("ExternalStorageDemo", "Save to: " + path);
 
         try {
             File myFile = new File(path);
@@ -121,18 +120,15 @@ public class MainActivity extends Activity {
         }
     }
 
-    // With Android Level >= 23, you have to ask the user
-    // for permission with device (For example read/write data on the device).
+    // Android ver >= 23, zahtjeva da s ekorisnik pita za dozvolu za korištenje
+    // određenog resursa na uređaju (npr. čitanje/pisanje datoteke).
     private boolean askPermission(int requestId, String permissionName) {
         if (android.os.Build.VERSION.SDK_INT >= 23) {
-            // Check if we have permission
+            // Je li dozvola dobivena?
             int permission = ActivityCompat.checkSelfPermission(this, permissionName);
             if (permission != PackageManager.PERMISSION_GRANTED) {
-                // If don't have permission so prompt the user.
-                this.requestPermissions(
-                        new String[]{permissionName},
-                        requestId
-                );
+                // Dozvola nije dobivena, traži od korisnika dozvolu
+                this.requestPermissions(new String[]{permissionName}, requestId);
                 return false;
             }
         }
