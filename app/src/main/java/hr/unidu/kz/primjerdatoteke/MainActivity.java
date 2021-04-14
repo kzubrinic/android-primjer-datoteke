@@ -73,7 +73,10 @@ public class MainActivity extends Activity {
         }
 
         File extStore = Environment.getExternalStorageDirectory();
-        String path = extStore.getAbsolutePath() + "/" + nazivDatoteke;
+        File mapa = new File(extStore, "moja_mapa");
+        if (!mapa.exists())
+            mapa.mkdir();
+        String path = mapa.getAbsolutePath() + "/" + nazivDatoteke;
 
         try {
             File myFile = new File(path);
@@ -98,7 +101,10 @@ public class MainActivity extends Activity {
         }
 
         File extStore = Environment.getExternalStorageDirectory();
-        String path = extStore.getAbsolutePath() + "/" + nazivDatoteke;
+        File mapa = new File(extStore, "moja_mapa");
+        if (!mapa.exists())
+            mapa.mkdir();
+        String path = mapa.getAbsolutePath() + "/" + nazivDatoteke;
 
         try {
             File myFile = new File(path);
